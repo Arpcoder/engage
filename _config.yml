@@ -1,0 +1,41 @@
+title: Engage
+description:  This is where we define how we engage.
+
+image: https://postman-toolboxes2.s3.amazonaws.com/assets/api.png
+url: https://engage.postman-open-technologies.github.io/
+email: ki.lanen@postman.com
+
+github_user: postman-open-technologies
+github_repo: engage
+github_branch: main
+
+version:      1.1.1
+markdown:     kramdown
+
+paginate: 100
+paginate_path: "/updates/page:num"
+
+collections:
+  areas:    
+    permalink: /areas/:path/  
+    output: true
+  components:    
+    permalink: /components/:path/  
+    output: true    
+  organizations:    
+    permalink: /organizations/:path/  
+    output: true           
+
+defaults:
+  - scope:
+      type: areas
+    values:
+      layout: areas      
+  - scope:
+      type: components
+    values:
+      layout: components    
+  - scope:
+      type: organizations
+    values:
+      layout: organizations                        
