@@ -1,2 +1,2 @@
-# engage
-This is where we engage with the community.
+# Engage
+This is a repo to define how we engage.
