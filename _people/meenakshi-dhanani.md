@@ -4,4 +4,6 @@ title: Developer Advocate
 twitter: mdhananii
 github: meenakshi-dhanani
 blog_rss: ''
+organizations:
+    - Postman
 ---

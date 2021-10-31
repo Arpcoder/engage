@@ -4,4 +4,6 @@ title: Developer Advocate
 twitter: seanryankeegan
 github: seanryankeegan
 blog_rss: ''
+organizations:
+    - Postman
 ---

@@ -15,11 +15,11 @@ layout: default
    <div class="container"> 
 
       <div class="row collection__header text-center">
-      <div class="col-md-12">
-         <h2 class="h1">Areas</h2>
-         <p style="text-align: left;">These are the areas we engage in.</p>      
+         <div class="col-md-12">
+            <h2 class="h1">Areas</h2>
+            <p style="text-align: left;">These are the areas we engage in.</p>      
+         </div>
       </div>
-   </div>
 
       {% assign areas = site.areas | sort: "name" %}
       {% for area in areas %}

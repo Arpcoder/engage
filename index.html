@@ -16,7 +16,7 @@ layout: default
 
       <div class="row collection__header text-center">
          <div class="col-md-12">
-            <h2 class="h1">Components</h2>    
+            <h2 class="h1">Components (<a href="components/">All</a>)</h2>    
          </div>
       </div>
       <br><br>
@@ -107,7 +107,7 @@ layout: default
 
       <div class="row collection__header text-center">
          <div class="col-md-12">
-            <h2 class="h1">Areas</h2>    
+            <h2 class="h1">Areas (<a href="areas/">All</a>)</h2>    
          </div>
       </div>
       <br><br>
@@ -178,7 +178,7 @@ layout: default
           $("#areacloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 4},
+          "factor" : 10},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
@@ -198,7 +198,7 @@ layout: default
 
       <div class="row collection__header text-center">
          <div class="col-md-12">
-            <h2 class="h1">People</h2>    
+            <h2 class="h1">People< (<a href="people/">All</a>)/h2>    
          </div>
       </div>
       <br><br>
@@ -222,7 +222,7 @@ layout: default
             {% endif %}   
          {% endfor %}  
       {% endfor %} 
-      
+
       {% assign people_tag = all_peoples | split: "," %}
       {% assign people_tag = people_tag | sort %}
 
@@ -269,7 +269,7 @@ layout: default
           $("#peoplecloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 4},
+          "factor" : 5},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
