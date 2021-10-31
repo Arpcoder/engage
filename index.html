@@ -73,7 +73,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ component_count }}"><a href="/components/{{ component | downcase | replace: ' ','-' }}/">{{ component }}</a></span>
+           <span data-weight="{{ component_count }}"><a href="{{ site.url }}components/{{ component | downcase | replace: ' ','-' }}/">{{ component }}</a></span>
         {% endfor %}
         </div>
       
@@ -164,7 +164,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ area_count }}"><a href="/areas/{{ area | downcase | replace: ' ','-' }}/">{{ area }}</a></span>
+           <span data-weight="{{ area_count }}"><a href="{{ site.url }}areas/{{ area | downcase | replace: ' ','-' }}/">{{ area }}</a></span>
         {% endfor %}
         </div>
       
@@ -346,7 +346,7 @@ layout: default
                {% endfor %}   
             {% endfor %}              
 
-            <span data-weight="{{ organization_count }}"><a href="/organizations/{{ display_organization | downcase | replace: ' ','-' }}/">{{ display_organization }}</a></span>
+            <span data-weight="{{ organization_count }}"><a href="{{ site.url }}organizations/{{ display_organization | downcase | replace: ' ','-' }}/">{{ display_organization }}</a></span>
 
         {% endfor %}
         </div>
@@ -438,7 +438,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ people_count }}"><a href="/people/{{ people | downcase | replace: ' ','-' }}/">{{ people }}</a></span>
+           <span data-weight="{{ people_count }}"><a href="{{ site.url }}people/{{ people | downcase | replace: ' ','-' }}/">{{ people }}</a></span>
         {% endfor %}
         </div>
       
