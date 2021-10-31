@@ -1,0 +1,100 @@
+---
+layout: default
+---
+<div class="container-fluid hero v5_starfield-small-night-sky pb-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 hero_title" style="padding: 0px 0px 0px 0px; margin: 0px; text-align: center;">
+            <h1 style="text-align: center;"><a href="{{ site.url }}" style="color: #FFF;">{{ site.title }}</a></h1>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">Components (<a href="components/">All</a>)</h2>    
+         </div>
+      </div>
+
+      {% assign components = site.components | sort: "name" %}
+      <ul>
+      {% for component in components %}
+         <li>{{ component.name }}</li>
+      {% endfor %}       
+      </ul>   
+
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">Areas (<a href="areas/">All</a>)</h2>    
+         </div>
+      </div>
+
+      {% assign areas = site.areas | sort: "name" %}
+      <ul>
+      {% for area in areas %}
+         <li>{{ area.name }}</li>
+      {% endfor %}       
+      </ul>
+
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">Organizations (<a href="organizations/">All</a>)</h2>    
+         </div>
+      </div>
+
+      {% assign organizations = site.organizations | sort: "name" %}
+      <ul>
+      {% for organization in organizations %}
+         <li>{{ organization.name }}</li>
+      {% endfor %}       
+      </ul>      
+
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">People (<a href="people/">All</a>)</h2>    
+         </div>
+      </div>
+
+      {% assign peoples = site.people | sort: "name" %}
+      <ul>
+      {% for people in peoples %}
+         <li>{{ people.name }}</li>
+      {% endfor %}       
+      </ul>         
+
+   </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row blurb text-center">
+      <div class="col-md-12">
+         <h2>About this Project</h2>
+         <p class="collection__end_p">Description</p>
+      </div>
+      <div class="col-md-12 blurb_padding" style="text-align: center;">
+         <a class="btn btn__secondary-light" href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}">Visit GitHub</a>
+      </div>
+   </div>
+</div>

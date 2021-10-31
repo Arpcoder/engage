@@ -11,15 +11,17 @@ layout: default
    </div>
 </div>
 
-<div>
-   <div class="container"> 
-
-      <div class="row collection__header text-center">
-         <div class="col-md-12">
-            <h2 class="h1">Components (<a href="components/">All</a>)</h2>    
-         </div>
+<div class="container-fluid">
+   <div class="row blurb text-center" style="padding-top: 5px; padding-bottom: 5px;">
+      <div class="col-md-12">
+         <h2 class="h1">Components (<a href="components/" style="color: #FFF;">All</a>)</h2> 
       </div>
-      <br><br>
+   </div>
+</div>
+
+<div>
+   <div class="container" style="margin-top: 50px;">
+
       {% assign all_components = "" %} 
       {% assign today = 'now' | date: '%s' %}
       {% assign single_day = 86400 %}      
@@ -78,7 +80,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ component_count }}">{{ component }}</span>
+           <span data-weight="{{ component_count }}"><a href="/components/{{ component | downcase | replace: ' ','-' }}/">{{ component }}</a></span>
         {% endfor %}
         </div>
       
@@ -101,16 +103,16 @@ layout: default
 
    </div>
 </div>
-
-<div>
-   <div class="container"> 
-
-      <div class="row collection__header text-center">
-         <div class="col-md-12">
-            <h2 class="h1">Areas (<a href="areas/">All</a>)</h2>    
-         </div>
+<div class="container-fluid">
+   <div class="row blurb text-center" style="padding-top: 5px; padding-bottom: 5px;">
+      <div class="col-md-12">
+         <h2 class="h1">Areas (<a href="areas/" style="color: #FFF;">All</a>)</h2> 
       </div>
-      <br><br>
+   </div>
+</div>
+<div>
+   <div class="container" style="margin-top: 50px;">
+
       {% assign all_areas = "" %} 
       {% assign today = 'now' | date: '%s' %}
       {% assign single_day = 86400 %}      
@@ -169,7 +171,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ area_count }}">{{ area }}</span>
+           <span data-weight="{{ area_count }}"><a href="/areas/{{ area | downcase | replace: ' ','-' }}/">{{ area }}</a></span>
         {% endfor %}
         </div>
       
@@ -192,16 +194,199 @@ layout: default
 
    </div>
 </div>
-
-<div>
-   <div class="container"> 
-
-      <div class="row collection__header text-center">
-         <div class="col-md-12">
-            <h2 class="h1">People< (<a href="people/">All</a>)/h2>    
-         </div>
+<div class="container-fluid">
+   <div class="row blurb text-center" style="padding-top: 5px; padding-bottom: 5px;">
+      <div class="col-md-12">
+         <h2 class="h1">Organizations (<a href="organizations/" style="color: #FFF;">All</a>)</h2> 
       </div>
-      <br><br>
+   </div>
+</div>
+<div>
+   <div class="container" style="margin-top: 50px;">
+
+      {% assign all_organizations = "" %} 
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}      
+
+      {% assign organizations = site.organizations %}
+      {% for organization in organizations %}
+
+         {% assign all_timelines = site.data.twitter-timelines[organization.twitter] %}
+         {% for org_timeline in all_timelines %}
+            {% for this_timeline in org_timeline %}
+
+               {% if this_timeline.created_at != '' %}
+
+                  {% assign this_day = this_timeline.created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}            
+
+                  {% if how_many_days < 32 %}    
+                     {% if all_organizations contains organization.name %}
+                     {% else %}
+                        {% assign all_organizations = all_organizations | append: organization.name | append: ',' %}
+                     {% endif %}   
+                  {% endif %} 
+               
+               {% endif %} 
+
+            {% endfor %}  
+         {% endfor %} 
+
+      {% endfor %} 
+
+      <!-- Look through all People -->
+      {% assign peoples = site.people %}
+      {% for people in peoples %}         
+
+         {% for people_org in people.organizations %}         
+
+            {% for organization in organizations %}
+
+               {% if organization.name == people_org %}
+
+                  {% assign people_timelines = site.data.twitter-timelines[people.twitter] %}
+                  {% for people_timeline in people_timelines %}
+                     {% for this_timeline in people_timeline %}      
+
+                        {% assign this_day = this_timeline.created_at | date: '%s' %}
+                        {% assign day_diff = today | minus: this_day %}          
+                        {% assign how_many_days = day_diff | divided_by: single_day %}            
+
+                        {% if how_many_days < 32 %}    
+                           {% if all_organizations contains organization.name %}
+                           {% else %}
+                              {% assign all_organizations = all_organizations | append: organization.name | append: ',' %}
+                           {% endif %}   
+                        {% endif %}  
+
+                     {% endfor %}  
+                  {% endfor %}                      
+
+               {% endif %} 
+
+            {% endfor %} 
+
+         {% endfor %}   
+      {% endfor %}        
+
+      {% assign organization_tag = all_organizations | split: "," %}
+      {% assign organization_tag = organization_tag | sort %}
+
+      <center>
+      <div class="tag-row" align="center">
+      
+        <style type="text/css">
+          .organizationcloud {
+          border: 2px solid #FFF;
+          height: 4in;
+          width: 100%;
+          padding: 5px;
+          margin: 0px;
+          }
+        </style>
+      
+        <div id="organizationcloud" class="organizationcloud">
+        {% for display_organization in organization_tag %}
+
+            {% assign organization_count = 0 %}
+
+            {% for organization in organizations %}
+
+               {% if organization.name == display_organization %}
+
+                  {% assign all_timelines = site.data.twitter-timelines[organization.twitter] %}
+                  {% for org_timeline in all_timelines %}
+                     {% for this_timeline in org_timeline %}
+         
+                        {% if this_timeline.created_at != '' %}
+         
+                           {% assign this_day = this_timeline.created_at | date: '%s' %}
+                           {% assign day_diff = today | minus: this_day %}          
+                           {% assign how_many_days = day_diff | divided_by: single_day %}            
+         
+                           {% if how_many_days < 32 %}    
+                              {% assign organization_count = organization_count | plus: 1 %}  
+                           {% endif %} 
+                        
+                        {% endif %} 
+         
+                     {% endfor %}  
+                  {% endfor %} 
+
+               {% endif %} 
+      
+            {% endfor %}   
+            
+            {% assign peoples = site.people %}
+            {% for people in peoples %}         
+     
+               {% for people_org in people.organizations %}         
+      
+                  {% for organization in organizations %}
+
+                     {% if organization.name == display_organization %}
+      
+                        {% if organization.name == people_org %}
+         
+                           {% assign people_timelines = site.data.twitter-timelines[people.twitter] %}
+                           {% for people_timeline in people_timelines %}
+                              {% for this_timeline in people_timeline %}      
+         
+                                 {% assign this_day = this_timeline.created_at | date: '%s' %}
+                                 {% assign day_diff = today | minus: this_day %}          
+                                 {% assign how_many_days = day_diff | divided_by: single_day %}            
+         
+                                 {% if how_many_days < 32 %}    
+                                    {% assign organization_count = organization_count | plus: 1 %}   
+                                 {% endif %}  
+         
+                              {% endfor %}  
+                           {% endfor %}                      
+         
+                        {% endif %} 
+
+                     {% endif %} 
+      
+                  {% endfor %} 
+      
+               {% endfor %}   
+            {% endfor %}              
+
+            <span data-weight="{{ organization_count }}"><a href="/organizations/{{ display_organization | downcase | replace: ' ','-' }}/">{{ display_organization }}</a></span>
+
+        {% endfor %}
+        </div>
+      
+        <script>
+        $(document).ready(function(){
+          $("#organizationcloud").awesomeCloud({
+          "size" : {
+          "grid" : 50,
+          "factor" : 1},
+          "options" : {
+          "color" : "random-dark",
+          "rotationRatio" : 0},
+          "font" : "Times New Roman, Times, serif",
+          "shape" : "circle"});
+          });
+        </script>
+      
+      </div>
+      </center>
+
+   </div>
+</div>
+<div class="container-fluid">
+   <div class="row blurb text-center" style="padding-top: 5px; padding-bottom: 5px;">
+      <div class="col-md-12">
+         <h2 class="h1">People (<a href="people/" style="color: #FFF;">All</a>)</h2> 
+      </div>
+   </div>
+</div>
+<div>
+   <div class="container" style="margin-top: 50px;">
+
       {% assign all_peoples = "" %} 
       {% assign today = 'now' | date: '%s' %}
       {% assign single_day = 86400 %}      
@@ -260,7 +445,7 @@ layout: default
                   {% endif %}   
                {% endfor %}  
             {% endfor %} 
-           <span data-weight="{{ people_count }}">{{ people }}</span>
+           <span data-weight="{{ people_count }}"><a href="/people/{{ people | downcase | replace: ' ','-' }}/">{{ people }}</a></span>
         {% endfor %}
         </div>
       
@@ -288,7 +473,7 @@ layout: default
    <div class="row blurb text-center">
       <div class="col-md-12">
          <h2>About this Project</h2>
-         <p class="collection__end_p">Description</p>
+         <p class="collection__end_p">This a project to define how we engage at Postman. quantifying the different organizations we operate within, the components we use, the areas we reach, and the people who do the engaging across our community.</p>
       </div>
       <div class="col-md-12 blurb_padding" style="text-align: center;">
          <a class="btn btn__secondary-light" href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}">Visit GitHub</a>

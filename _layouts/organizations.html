@@ -23,11 +23,128 @@ layout: default
       </div>      
       
       {% assign timelines = site.data.twitter-timelines[page.twitter] %}
-      <ul>
+      {% assign organizations = site.organizations %}
+
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}
+      {% assign any_tweets_this_week = 0 %}
       {% for timeline in timelines %}
-         <li>{{ timeline[1].created_at | date: "%a, %b %d, %Y" }} - {{ timeline[1].text }}</li>
-      {% endfor %}   
+         {% assign this_day = timeline[1].created_at | date: '%s' %}
+         {% assign day_diff = today | minus: this_day %}          
+         {% assign how_many_days = day_diff | divided_by: single_day %}    
+         {% if how_many_days < 8 %}         
+            {% assign any_tweets_this_week = 1 %}
+         {% endif %}   
+      {% endfor %} 
+
+      <h3>Last Week</h3>
+      <p><strong>{{ page.name }}</strong></p>
+      <ul>
+      {% if any_tweets_this_week == 1 %}                      
+         {% for timeline in timelines %}
+            {% assign this_day = timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}             
+            {% if how_many_days < 8 %} 
+               <li><strong>{{ timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ timeline[1].text }}</li>
+            {% endif %}  
+         {% endfor %}            
+      {% else %} 
+         <li>No Tweets This Week!</li>
+      {% endif %} 
       </ul>
+
+      {% assign peoples = site.people %}
+      {% for people in peoples %}         
+
+         {% for people_org in people.organizations %}         
+
+            {% for organization in organizations %}
+
+               {% if organization.name == page.name %}
+
+                  {% if organization.name == people_org %}
+
+                     {% assign any_tweets_this_week = 0 %}
+                     {% assign people_timelines = site.data.twitter-timelines[people.twitter] %}
+                     {% for people_timeline in people_timelines %}
+                        {% for this_timeline in people_timeline %}      
+
+                           {% assign this_day = this_timeline.created_at | date: '%s' %}
+                           {% assign day_diff = today | minus: this_day %}          
+                           {% assign how_many_days = day_diff | divided_by: single_day %}            
+
+                           {% if how_many_days < 8 %}  
+                              {% assign any_tweets_this_week = 1 %}   
+                           {% endif %}  
+
+                        {% endfor %}  
+                     {% endfor %}                 
+
+                     {% if any_tweets_this_week == 1 %}   
+                        <p><strong>{{ people.name }}</strong></p>
+                        <ul>
+                        {% assign people_timelines = site.data.twitter-timelines[people.twitter] %}
+                        {% for people_timeline in people_timelines %}
+                           {% for this_timeline in people_timeline %}      
+
+                              {% assign this_day = this_timeline.created_at | date: '%s' %}
+                              {% assign day_diff = today | minus: this_day %}          
+                              {% assign how_many_days = day_diff | divided_by: single_day %}            
+
+                              {% if how_many_days < 8 %}   
+                                 <li><strong>{{ this_timeline.created_at | date: "%a, %b %d, %Y" }}</strong> - {{ this_timeline.text }}</li> 
+                              {% endif %}  
+
+                           {% endfor %}  
+                        {% endfor %}  
+                        </ul>
+                     {% endif %}                      
+
+                  {% endif %} 
+
+               {% endif %} 
+
+            {% endfor %} 
+
+         {% endfor %}   
+      {% endfor %}    
+
+
+      <hr>
+      <h3>Last Month</h3>
+      <p><strong>{{ page.name }}</strong></p>
+      <ul>
+
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}
+      {% assign any_tweets_this_week = 0 %}
+      {% for timeline in timelines %}
+         {% assign this_day = timeline[1].created_at | date: '%s' %}
+         {% assign day_diff = today | minus: this_day %}          
+         {% assign how_many_days = day_diff | divided_by: single_day %}    
+         {% if how_many_days > 8 %}   
+            {% if how_many_days < 32 %}        
+               {% assign any_tweets_this_week = 1 %}
+            {% endif %}                  
+         {% endif %}   
+      {% endfor %} 
+
+      {% if any_tweets_this_week == 1 %}                      
+         {% for timeline in timelines %}
+            {% assign this_day = timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}             
+            {% if how_many_days > 8 %}   
+               {% if how_many_days < 32 %}   
+               <li><strong>{{ timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ timeline[1].text }}</li>
+               {% endif %}                  
+            {% endif %}    
+         {% endfor %}            
+      {% else %} 
+         <li>No Tweets This Week!</li>
+      {% endif %} 
+      </ul>      
 
    </div>
 </div>
