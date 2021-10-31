@@ -6,4 +6,5 @@ github: meenakshi-dhanani
 blog_rss: ''
 organizations:
     - Postman
+image: meenakshi-dhanani.jpeg
 ---

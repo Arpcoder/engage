@@ -6,4 +6,5 @@ github: fmvilas
 blog_rss: ''
 organizations:
     - AsyncAPI
+image: fran-méndez.jpeg
 ---

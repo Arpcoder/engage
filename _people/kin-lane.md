@@ -10,4 +10,5 @@ organizations:
     - OpenAPI
     - AsyncAPI
     - JSON Schema
+image: kin-lane.jpeg
 ---

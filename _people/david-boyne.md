@@ -6,4 +6,5 @@ github: boyney123
 blog_rss: ''
 organizations:
     - AsyncAPI
+image: david-boyne.png
 ---

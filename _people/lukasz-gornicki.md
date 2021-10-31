@@ -6,4 +6,5 @@ github: derberg
 blog_rss: ''
 organizations:
     - AsyncAPI
+image: lukasz-gornicki.jpeg
 ---

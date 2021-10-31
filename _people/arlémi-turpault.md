@@ -6,4 +6,5 @@ github: arlemi
 blog_rss: ''
 organizations:
     - Postman
+image: arlémi-turpault.jpeg
 ---
