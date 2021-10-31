@@ -21,7 +21,7 @@
     <url>
       <loc>http://localhost:4000/organizations/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -36,7 +36,7 @@
     <url>
       <loc>http://localhost:4000/areas/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -51,7 +51,7 @@
     <url>
       <loc>http://localhost:4000/working/bullets/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -66,7 +66,7 @@
     <url>
       <loc>http://localhost:4000/updates/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -81,7 +81,7 @@
     <url>
       <loc>http://localhost:4000/components/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -96,7 +96,7 @@
     <url>
       <loc>http://localhost:4000/people/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -111,7 +111,7 @@
     <url>
       <loc>http://localhost:4000/</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -128,7 +128,7 @@
     <url>
       <loc>http://localhost:4000/assets/css/style.css</loc>
       
-        <lastmod>2021-10-31T16:05:09-07:00</lastmod>
+        <lastmod>2021-10-31T16:25:48-07:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
