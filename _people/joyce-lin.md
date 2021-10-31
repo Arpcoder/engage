@@ -1,7 +1,7 @@
 ---
 name: Joyce Lin
 title: Director of Developer Relations
-twitter: PetuniaGray
+twitter: petuniagray
 github: loopDelicious
 blog_rss: ''
 ---

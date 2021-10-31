@@ -1,0 +1,297 @@
+---
+layout: default
+---
+<div class="container-fluid hero v5_starfield-small-night-sky pb-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 hero_title" style="padding: 0px 0px 0px 0px; margin: 0px; text-align: center;">
+            <h1 style="text-align: center;"><a href="{{ site.url }}" style="color: #FFF;">{{ site.title }}</a></h1>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">Components</h2>    
+         </div>
+      </div>
+      <br><br>
+      {% assign all_components = "" %} 
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}      
+      {% assign all_timelines = site.data.twitter-timelines %}
+      {% for org_timeline in all_timelines %}
+         {% for this_timeline in org_timeline[1] %}
+            {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}            
+            {% if how_many_days < 32 %}    
+               {% for component in this_timeline[1].components %}
+                  {% if all_components contains component %}
+                  {% else %}
+                     {% assign component = component | strip_newlines | strip_html %}
+                     {% assign all_components = all_components | append: component | append: ',' %}
+                  {% endif %}
+               {% endfor %}  
+            {% endif %}   
+         {% endfor %}  
+      {% endfor %} 
+
+      {% assign component_tag = all_components | split: "," %}
+      {% assign component_tag = component_tag | sort %}
+
+      <center>
+      <div class="tag-row" align="center">
+      
+        <style type="text/css">
+          .componentcloud {
+          border: 2px solid #FFF;
+          height: 4in;
+          width: 100%;
+          padding: 5px;
+          margin: 0px;
+          }
+        </style>
+      
+        <div id="componentcloud" class="componentcloud">
+        {% for component in component_tag %}
+
+            {% assign component_count = 0 %}
+            {% assign today = 'now' | date: '%s' %}
+            {% assign single_day = 86400 %}      
+            {% assign all_timelines = site.data.twitter-timelines %}
+            {% for org_timeline in all_timelines %}
+               {% for this_timeline in org_timeline[1] %}
+                  {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}            
+                  {% if how_many_days < 32 %}    
+                     {% for this_component in this_timeline[1].components %}
+                        {% if this_component == component %}
+                        {% assign component_count = component_count | plus: 1 %}
+                        {% endif %}
+                     {% endfor %}  
+                  {% endif %}   
+               {% endfor %}  
+            {% endfor %} 
+           <span data-weight="{{ component_count }}">{{ component }}</span>
+        {% endfor %}
+        </div>
+      
+        <script>
+        $(document).ready(function(){
+          $("#componentcloud").awesomeCloud({
+          "size" : {
+          "grid" : 50,
+          "factor" : 4},
+          "options" : {
+          "color" : "random-dark",
+          "rotationRatio" : 0},
+          "font" : "Times New Roman, Times, serif",
+          "shape" : "circle"});
+          });
+        </script>
+      
+      </div>
+      </center>
+
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">Areas</h2>    
+         </div>
+      </div>
+      <br><br>
+      {% assign all_areas = "" %} 
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}      
+      {% assign all_timelines = site.data.twitter-timelines %}
+      {% for org_timeline in all_timelines %}
+         {% for this_timeline in org_timeline[1] %}
+            {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}            
+            {% if how_many_days < 32 %}    
+               {% for area in this_timeline[1].areas %}
+                  {% if all_areas contains area %}
+                  {% else %}
+                     {% assign area = area | strip_newlines | strip_html %}
+                     {% assign all_areas = all_areas | append: area | append: ',' %}
+                  {% endif %}
+               {% endfor %}  
+            {% endif %}   
+         {% endfor %}  
+      {% endfor %} 
+      
+      {% assign area_tag = all_areas | split: "," %}
+      {% assign area_tag = area_tag | sort %}
+
+      <center>
+      <div class="tag-row" align="center">
+      
+        <style type="text/css">
+          .areacloud {
+          border: 2px solid #FFF;
+          height: 4in;
+          width: 100%;
+          padding: 5px;
+          margin: 0px;
+          }
+        </style>
+      
+        <div id="areacloud" class="areacloud">
+        {% for area in area_tag %}
+
+            {% assign area_count = 0 %}
+            {% assign today = 'now' | date: '%s' %}
+            {% assign single_day = 86400 %}      
+            {% assign all_timelines = site.data.twitter-timelines %}
+            {% for org_timeline in all_timelines %}
+               {% for this_timeline in org_timeline[1] %}
+                  {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}            
+                  {% if how_many_days < 32 %}    
+                     {% for this_area in this_timeline[1].areas %}
+                        {% if this_area == area %}
+                        {% assign area_count = area_count | plus: 1 %}
+                        {% endif %}
+                     {% endfor %}  
+                  {% endif %}   
+               {% endfor %}  
+            {% endfor %} 
+           <span data-weight="{{ area_count }}">{{ area }}</span>
+        {% endfor %}
+        </div>
+      
+        <script>
+        $(document).ready(function(){
+          $("#areacloud").awesomeCloud({
+          "size" : {
+          "grid" : 50,
+          "factor" : 4},
+          "options" : {
+          "color" : "random-dark",
+          "rotationRatio" : 0},
+          "font" : "Times New Roman, Times, serif",
+          "shape" : "circle"});
+          });
+        </script>
+      
+      </div>
+      </center>
+
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1">People</h2>    
+         </div>
+      </div>
+      <br><br>
+      {% assign all_peoples = "" %} 
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}      
+      {% assign all_timelines = site.data.twitter-timelines %}
+      {% for org_timeline in all_timelines %}
+         {% for this_timeline in org_timeline[1] %}
+            {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}            
+            {% if how_many_days < 32 %}    
+               {% for people in this_timeline[1].people %}
+                  {% if all_peoples contains people %}
+                  {% else %}
+                     {% assign people = people | strip_newlines | strip_html %}
+                     {% assign all_peoples = all_peoples | append: people | append: ',' %}
+                  {% endif %}
+               {% endfor %}  
+            {% endif %}   
+         {% endfor %}  
+      {% endfor %} 
+      
+      {% assign people_tag = all_peoples | split: "," %}
+      {% assign people_tag = people_tag | sort %}
+
+      <center>
+      <div class="tag-row" align="center">
+      
+        <style type="text/css">
+          .peoplecloud {
+          border: 2px solid #FFF;
+          height: 4in;
+          width: 100%;
+          padding: 5px;
+          margin: 0px;
+          }
+        </style>
+      
+        <div id="peoplecloud" class="peoplecloud">
+        {% for people in people_tag %}
+
+            {% assign people_count = 0 %}
+            {% assign today = 'now' | date: '%s' %}
+            {% assign single_day = 86400 %}      
+            {% assign all_timelines = site.data.twitter-timelines %}
+            {% for org_timeline in all_timelines %}
+               {% for this_timeline in org_timeline[1] %}
+                  {% assign this_day = this_timeline[1].created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}            
+                  {% if how_many_days < 32 %}    
+                     {% for this_people in this_timeline[1].people %}
+                        {% if this_people == people %}
+                        {% assign people_count = people_count | plus: 1 %}
+                        {% endif %}
+                     {% endfor %}  
+                  {% endif %}   
+               {% endfor %}  
+            {% endfor %} 
+           <span data-weight="{{ people_count }}">{{ people }}</span>
+        {% endfor %}
+        </div>
+      
+        <script>
+        $(document).ready(function(){
+          $("#peoplecloud").awesomeCloud({
+          "size" : {
+          "grid" : 50,
+          "factor" : 4},
+          "options" : {
+          "color" : "random-dark",
+          "rotationRatio" : 0},
+          "font" : "Times New Roman, Times, serif",
+          "shape" : "circle"});
+          });
+        </script>
+      
+      </div>
+      </center>
+
+   </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row blurb text-center">
+      <div class="col-md-12">
+         <h2>About this Project</h2>
+         <p class="collection__end_p">Description</p>
+      </div>
+      <div class="col-md-12 blurb_padding" style="text-align: center;">
+         <a class="btn btn__secondary-light" href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}">Visit GitHub</a>
+      </div>
+   </div>
+</div>

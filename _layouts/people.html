@@ -1,0 +1,182 @@
+---
+layout: default
+---
+<div class="container-fluid hero v5_starfield-small-night-sky pb-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6 hero_title" style="padding: 125px 0px 0px 0px; margin: 0px;">
+            <h1><a href="{{ site.url }}" style="color: #FFF;">{{ site.title }}</a></h1>
+         </div>
+         <div class="col-md-6 hero_image" style="padding: 0px; margin: 0px;"><a href="{{ site.url }}"><img src="{{ site.url }}/images/lifecycle.png" alt="" width="350"></a></div>
+      </div>
+   </div>
+</div>
+
+<div>
+   <div class="container">
+
+		<div class="row collection__header text-center">
+         <div class="col-md-12">
+            <h2 class="h1"><strong>People:</strong> {{ page.name }}</h2>
+            <p style="text-align: left;">{{ page.description }}</p>
+         </div>
+      </div>     
+      
+      {% assign timelines = site.data.twitter-timelines[page.twitter] %}
+      {% assign organizations = site.organizations %} 
+
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}
+      {% assign any_tweets_this_week = 0 %}
+      {% for timeline in timelines %}
+         {% assign this_day = timeline[1].created_at | date: '%s' %}
+         {% assign day_diff = today | minus: this_day %}          
+         {% assign how_many_days = day_diff | divided_by: single_day %}    
+         {% if how_many_days < 8 %}         
+            {% assign any_tweets_this_week = 1 %}
+         {% endif %}   
+      {% endfor %} 
+
+      <p><strong>{{ page.name }} Tweets for the Last Week</strong></p>
+      <ul>
+      {% if any_tweets_this_week == 1 %}                      
+         {% for timeline in timelines %}
+            {% assign this_day = timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}             
+            {% if how_many_days < 8 %} 
+               <li><strong>{{ timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ timeline[1].text }}</li>
+            {% endif %}  
+         {% endfor %}            
+      {% else %} 
+         <li>No Tweets This Week!</li>
+      {% endif %} 
+      </ul>
+    
+      {% for organization in organizations %}
+      
+         {% assign any_tweets_this_week = 0 %}
+         {% assign org_timelines = site.data.twitter-timelines[organization.twitter] %}
+         {% for org_timeline in org_timelines %}
+            {% for org_timeline_people in org_timeline[1].people %}
+               {% if org_timeline_people == page.name %}
+                  {% assign this_day = org_timeline[1].created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}          
+                  {% if how_many_days < 8 %}         
+                     {% assign any_tweets_this_week = 1 %}
+                  {% endif %}   
+               {% endif %}   
+            {% endfor %}   
+         {% endfor %}   
+
+         {% if any_tweets_this_week == 1 %}             
+            <p><strong>{{ organization.name }} Tweets that Mention {{ page.name }} for Last Week</strong></p>
+            <ul>        
+            {% assign org_timelines = site.data.twitter-timelines[organization.twitter] %}
+            {% for org_timeline in org_timelines %}
+               {% for org_timeline_people in org_timeline[1].people %}
+                  {% if org_timeline_people == page.name %}
+                     {% assign this_day = org_timeline[1].created_at | date: '%s' %}
+                     {% assign day_diff = today | minus: this_day %}          
+                     {% assign how_many_days = day_diff | divided_by: single_day %}          
+                     {% if how_many_days < 8 %}  
+                        <li><strong>{{ org_timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ org_timeline[1].text }}</li>
+                     {% endif %}  
+                  {% endif %}   
+               {% endfor %}   
+            {% endfor %}   
+            </ul>      
+         {% endif %} 
+          
+      {% endfor %}  
+
+      <hr>
+
+      {% assign today = 'now' | date: '%s' %}
+      {% assign single_day = 86400 %}
+      {% assign any_tweets_this_week = 0 %}
+      {% for timeline in timelines %}
+         {% assign this_day = timeline[1].created_at | date: '%s' %}
+         {% assign day_diff = today | minus: this_day %}          
+         {% assign how_many_days = day_diff | divided_by: single_day %}    
+         {% if how_many_days > 8 %}   
+            {% if how_many_days < 32 %}        
+               {% assign any_tweets_this_week = 1 %}
+            {% endif %}   
+         {% endif %} 
+      {% endfor %} 
+
+      <p><strong>{{ page.name }} Tweets (Last Month)</strong></p>
+      <ul>
+      {% if any_tweets_this_week == 1 %}                      
+         {% for timeline in timelines %}
+            {% assign this_day = timeline[1].created_at | date: '%s' %}
+            {% assign day_diff = today | minus: this_day %}          
+            {% assign how_many_days = day_diff | divided_by: single_day %}             
+            {% if how_many_days > 8 %}   
+               {% if how_many_days < 32 %}   
+                  <li><strong>{{ timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ timeline[1].text }}</li>
+               {% endif %}  
+            {% endif %}  
+         {% endfor %}            
+      {% else %} 
+         <li>No Tweets This Week!</li>
+      {% endif %} 
+      </ul>      
+
+      {% for organization in organizations %}
+      
+         {% assign any_tweets_this_week = 0 %}
+         {% assign org_timelines = site.data.twitter-timelines[organization.twitter] %}
+         {% for org_timeline in org_timelines %}
+            {% for org_timeline_people in org_timeline[1].people %}
+               {% if org_timeline_people == page.name %}
+                  {% assign this_day = org_timeline[1].created_at | date: '%s' %}
+                  {% assign day_diff = today | minus: this_day %}          
+                  {% assign how_many_days = day_diff | divided_by: single_day %}          
+                  {% if how_many_days > 8 %}   
+                     {% if how_many_days < 32 %}        
+                        {% assign any_tweets_this_week = 1 %}
+                     {% endif %}   
+                  {% endif %}  
+               {% endif %}   
+            {% endfor %}   
+         {% endfor %}   
+
+         {% if any_tweets_this_week == 1 %}             
+            <p><strong>{{ organization.name }} Tweets that Mention {{ page.name }} for Last Month</strong></p>
+            <ul>        
+            {% assign org_timelines = site.data.twitter-timelines[organization.twitter] %}
+            {% for org_timeline in org_timelines %}
+               {% for org_timeline_people in org_timeline[1].people %}
+                  {% if org_timeline_people == page.name %}
+                     {% assign this_day = org_timeline[1].created_at | date: '%s' %}
+                     {% assign day_diff = today | minus: this_day %}          
+                     {% assign how_many_days = day_diff | divided_by: single_day %}          
+                     {% if how_many_days > 8 %}   
+                     {% if how_many_days < 32 %}    
+                        <li><strong>{{ org_timeline[1].created_at | date: "%a, %b %d, %Y" }}</strong> - {{ org_timeline[1].text }}</li>
+                        {% endif %}   
+                     {% endif %}   
+                  {% endif %}   
+               {% endfor %}   
+            {% endfor %}   
+            </ul>      
+         {% endif %} 
+          
+      {% endfor %}        
+
+   </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row blurb text-center">
+      <div class="col-md-12">
+         <h2>Return to Main Page</h2>
+         <p class="collection__end_p">This provides a link back to the home page if you need it.
+         </p>
+      </div>
+      <div class="col-md-12 blurb_padding"><a class="btn btn__secondary-light" href="{{ site.url }}">Return to Main Page</a></div>
+   </div>
+</div>

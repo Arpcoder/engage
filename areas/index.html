@@ -1,0 +1,58 @@
+---
+layout: default
+---
+<div class="container-fluid hero v5_starfield-small-night-sky pb-4">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 hero_title" style="padding: 0px 0px 0px 0px; margin: 0px; text-align: center;">
+            <h1 style="text-align: center;"><a href="{{ site.url }}" style="color: #FFF;">{{ site.title }}</a></h1>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div>
+   <div class="container"> 
+
+      <div class="row collection__header text-center">
+      <div class="col-md-12">
+         <h2 class="h1">Areas</h2>
+         <p style="text-align: left;">These are the areas we engage in.</p>      
+      </div>
+   </div>
+
+      {% assign areas = site.areas | sort: "name" %}
+      {% for area in areas %}
+      <div class="row collection">
+
+         <div class="col-md-9">
+            <div class="row collection__meta">
+               <div class="col-12 collection__description">
+                  
+                  <h3><a href="{{ site.url }}{{ blueprint.url }}" title="Details" style="color: #000;">{{ area.name }}</a></h3>
+                  <p>{{ area.description }}</p>
+               </div>
+            </div>
+         </div>
+      
+         <div class="col-md-3 collection_cta" style="padding: 25px;">
+         <a class="landing btn btn__secondary-light" href="{{ site.url }}{{ area.url }}" title="Details">View Component</a>
+         </div>
+      
+      </div>
+      {% endfor %}        
+
+   </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row blurb text-center">
+      <div class="col-md-12">
+         <h2>About this Project</h2>
+         <p class="collection__end_p">Description</p>
+      </div>
+      <div class="col-md-12 blurb_padding" style="text-align: center;">
+         <a class="btn btn__secondary-light" href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}">Visit GitHub</a>
+      </div>
+   </div>
+</div>
