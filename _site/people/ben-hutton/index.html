@@ -99,7 +99,7 @@
                   
             
              
-           <span data-weight="2"><a href="/components/discussions/">Discussions</a></span>
+           <span data-weight="4"><a href="/components/discussions/">Discussions</a></span>
         
 
             
@@ -107,7 +107,39 @@
                   
             
              
-           <span data-weight="3"><a href="/components/meetings/">Meetings</a></span>
+           <span data-weight="1"><a href="/components/issues/">Issues</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="5"><a href="/components/meetings/">Meetings</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/components/press-releases/">Press Releases</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/components/profiles/">Profiles</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/components/pull-requests/">Pull Requests</a></span>
         
 
             
@@ -123,7 +155,15 @@
                   
             
              
-           <span data-weight="1"><a href="/components/support/">Support</a></span>
+           <span data-weight="2"><a href="/components/support/">Support</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/components/use-cases/">Use Cases</a></span>
         
         </div>
       
@@ -188,7 +228,31 @@
                   
             
              
-           <span data-weight="6"><a href="/areas/json-schema/">JSON Schema</a></span>
+           <span data-weight="1"><a href="/areas/governance/">Governance</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/areas/ide/">IDE</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="24"><a href="/areas/json-schema/">JSON Schema</a></span>
+        
+
+            
+            
+                  
+            
+             
+           <span data-weight="1"><a href="/areas/social/">Social</a></span>
         
         </div>
       
@@ -242,6 +306,145 @@
                       
                          
              
+               <li><strong>Fri, Nov 12, 2021</strong> - 📢Want to write modern @jsonschema in @code?📢
+👇Respond to this issue with an upvote👇
+https://t.co/RRXgNIBXyU
+
+The issue is in the backlog, but that doesn't mean it has any priorty, and isn't scheduled work.
+
+Let's see if we can change that!?</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - The Pull Request I've created will introduce the same warning for any JOSN document which identifies as using the 2020-12 dialect (JSON Schema draft 2020-12).
+https://t.co/KQmxPnNz4R
+It's unexciting, but could potentially save a lot of false assurance and debugging time! 🥳</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - I believe this is because VSCode is retreiving the 2020-12 meta-schema, and treating it as a normal JSON Schema, defaulting to the implementations most current dialect for validation processing.</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - In JSON Schema, unknown keywords are ignored.
+I explain in an issue I created today, a JSON Schema file which uses the 2020-12 dialect URI in @code will be creating a false positive in terms of validation.
+
+It will NEVER show any validation errors.
+
+https://t.co/qmSNRqu2nZ https://t.co/WTwMAoN5NR</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - This was added some two years ago: https://t.co/5LOYf9xGoS
+
+I made a PR to fix the error message around the same time: https://t.co/ukrJma2ZsZ
+
+But, right now, there's no such warning for draft 2020-12, so what's happening?</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - You might notice that in the previous images, JSON Schema draft-07 was used. This is the latest version of JSON Schema @code supports.
+
+When someone tries to use draft 2019-09, they get a warning against the `$schema` value, stating that it's not supported. https://t.co/TdlZiulVTw</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - ...you get autocomplete and validation. This is pretty neat for authoring JSON Schemas. It's also automatically applied to files at specific locations using https://t.co/fLlcUqSAZ8
+
+It stops you making potentially silly mistakes.
+This is the only way I write JSON Schema documents https://t.co/5skcLQZ0gm</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - In a recent post, someone asked about Visual Studio support for newer versions of JSON Schema. A later comment included the quote in the first part of this thread (https://t.co/hlrE2MfwTQ)
+
+In VSCode, if the file type processing is JSON, and the root object includes `$schema`...</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - Drafts? 
+JSON Schema is released as "drafts" from version 1-7, then proceeding with 2019-09 and 2020-12.
+
+@code?
+VSCode allows for validation of JSON Schema baked in.
+That's the mechansium through which you get autocomplete/intelisense AND validation in your config files 😎</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Fri, Nov 12, 2021</strong> - 🧐"@code is properly able to use JSON Schemas based on the 2020-12 draft."
+😬 I'm afraid that would be a false positive.
+🔀 I've made a PR to hopefully avoid this in the near future!)
+👇 Let me explain...🧵</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Thu, Nov 11, 2021</strong> - 🤔 Need to make API requests which always return a specific status code?
+😃 Covered!
+https://t.co/qQtmL04Ft9
+
+Even 418 😉</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Thu, Nov 11, 2021</strong> - 😎Are you using @jsonschema in production?
+🤩Want to chat about it and share the recording with the community?
+
+Just let me know! 🤙
+I'm looking to record several over the next month 🥳</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Tue, Nov 09, 2021</strong> - @johnconnolly @darrel_miller I suspect it's possible, but I've not seen anyone write the tooling.
+We're trying to standardise how JSON Schema can be used for form generation. This should help library maintainers update to support newer versions, then you just have to extract schemas from your OAS doc!</li>
+              
+         
+            
+                      
+                         
+             
+               <li><strong>Mon, Nov 08, 2021</strong> - @kaa_a_zu In @code, start by setting the "language mode" to "JSON", then start your schema object with $schema with the version you want to use. Then you will have autocomplete for JSON Schema keywords.</li>
+              
+         
+            
+                      
+                         
+             
                <li><strong>Fri, Nov 05, 2021</strong> - About 6 years ago I created a Perl library to allow @jsonschema implementations to easily use the official test suite.
 
 Today, I'm mering a PR to the JSON Schema website to list a new Perl implementation... and it uses this library!
@@ -252,18 +455,6 @@ The code lives on!</li>
             
                       
                          
-             
-               <li><strong>Wed, Nov 03, 2021</strong> - @GabbyMcNabb @platfarm_agtech @WineTasmania @farmOSorg @OpenTEAMAg @jsonschema Hey, @farmOSorg, I think I got an advert for your system. No idea why...
-But regardless, if you need JSON Schema help, we can help > https://t.co/hs3UT8Bry0</li>
-              
-         
-            
-                      
-                         
-             
-               <li><strong>Fri, Oct 29, 2021</strong> - @mariadb @probablyrealrob We'd love to talk to you about using JSON Schema in MariaDB. Wouldn't it be nice to be able to validate more than just "it's valid JSON" using a schema?
-
-Want to join us (@jsonschema) and Oracle/MySQL in defining extensions to JSON Schema for databases?</li>
               
          
             
@@ -306,6 +497,139 @@ Want to join us (@jsonschema) and Oracle/MySQL in defining extensions to JSON Sc
             <ul>        
             
             
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Fri, Nov 12, 2021</strong> - We are now writing up our first...🥁🥁🥁
+🥳CASE STUDY!🥳
+🤫We don't want to say who quite yet, but it's huge.
+🏴󠁧󠁢󠁥󠁮󠁧󠁿🇯🇵It's going to be published in English and Japanese!</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Fri, Nov 12, 2021</strong> - 🤔 Anything you think the JSON Schema team should be discussing?
+🤝 Create a Discussion on our community repo, and propose adding it to our agenda...
+🙌 Our next Open Community Working Meeting is on 2021-11-19 at 14:00 UTC
+https://t.co/42T9wmVb9s</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Thu, Nov 11, 2021</strong> - 🧑‍💻 Generate forms using JSON Schema?
+You CAN, but it's non-standard.
+We list libraries here: https://t.co/ev0dU86hf6
+
+🤔 Wouldn't it be nice if they understood JSON Schema the same?
+💪 Our community started a Special Interest Group aiming to do that!
+
+https://t.co/syuzBzvFNH</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Wed, Nov 10, 2021</strong> - 👷 We're going to be making a series of small incremental changes to our website over the next few months.
+🤝 The first focuses on highlighting our active community!
+
+🙌 Thank YOU! You've earnt it!
+
+You can check our the deploy preview while it's in review
+https://t.co/YyWxUAkXHj</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Tue, Nov 09, 2021</strong> - 😃 Did you hear about the 2021 State of the API Report from @getpostman?
+🥰 Our of all the API specifications, JSON Schema was most used and most loved!
+🙀 75% of responses use JSON Schema!
+It's great to be validated! 👏
+
+Read the full report: https://t.co/Xsr93o8UVC https://t.co/lWGn1LgCS8</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Tue, Nov 09, 2021</strong> - 😬Finding JSON Schema tricky?
+😎Feel like you're an expert (but have questions)?
+
+🥳Today is the day when we host JSON Schema Office Hours!
+🧐Come ask questions, get help, or find out what we're planning.
+
+🗓️Every Tuesday
+🙌For the community!
+🕒15:00 UTC
+🔗https://t.co/TQKpwErW9i</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Mon, Nov 08, 2021</strong> - 🎯 During our Open Community Working Meeting last week, we...
+📋Got through 8⃣ agenda items
+🙋 Discussed 5⃣ AOBs
+🔀Merged 2⃣ PRs
+👷Created 1⃣2⃣ action items
+
+All in ONE hour!
+
+👇Check it out, including the recording:
+https://t.co/fqvzNo7SAg</li>
+                       
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                       
+                        <li><strong>Sun, Nov 07, 2021</strong> - 🤩700 followers!
+We’ve grown so much in the last few months!
+
+Why not introduce yourself? How are you using JSON Schema today?</li>
+                       
+                     
+                  
+            
                   
             
                
@@ -346,14 +670,6 @@ https://t.co/fqvzNo7SAg</li>
                      
                                
                                
-                       
-                        <li><strong>Wed, Nov 03, 2021</strong> - 📋The agenda for our OCWM on 2021-11-05 is found at https://t.co/fqvzNo7SAg and so far includes...
-- Reviewing our application to join the @openjsf 
-- Reviewing case study questions
-- Considering what should be on our website homepage
-
-Got something you want to discuss?
-Comment!</li>
                        
                      
                   
@@ -450,11 +766,91 @@ Comment!</li>
             
                       
                          
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
+              
+         
+            
+                      
+                         
                
                   
-                  <li><strong>Tue, Oct 19, 2021</strong> - You should totally ask your most difficult JSON Schema questions!
+                  <li><strong>Wed, Nov 03, 2021</strong> - @GabbyMcNabb @platfarm_agtech @WineTasmania @farmOSorg @OpenTEAMAg @jsonschema Hey, @farmOSorg, I think I got an advert for your system. No idea why...
+But regardless, if you need JSON Schema help, we can help > https://t.co/hs3UT8Bry0</li>
+                 
+              
+         
+            
+                      
+                         
+               
+                  
+                  <li><strong>Fri, Oct 29, 2021</strong> - @mariadb @probablyrealrob We'd love to talk to you about using JSON Schema in MariaDB. Wouldn't it be nice to be able to validate more than just "it's valid JSON" using a schema?
 
-Oh, and the quoted tweet links to a GitHub Discussion with the Zoom link: https://t.co/CBEz6boIng https://t.co/HDa15adAg2</li>
+Want to join us (@jsonschema) and Oracle/MySQL in defining extensions to JSON Schema for databases?</li>
+                 
+              
+         
+            
+                      
+                         
+               
+                  
+                  <li><strong>Thu, Oct 28, 2021</strong> - 🧐Did you know GitHub has a public roadmap?
+
+They have some pretty cool things planned!
+
+https://t.co/8MwrHSRZFV
+
+Using the new project board too!</li>
                  
               
                      
@@ -483,6 +879,159 @@ Oh, and the quoted tweet links to a GitHub Discussion with the Zoom link: https:
          
             
 
+                      
+            <p><strong>JSON Schema</strong></p>
+            <ul>        
+            
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                     
+                  
+            
+               
+                  
+                     
+                               
+                               
+                        
+                         
+                        <li><strong>Wed, Nov 03, 2021</strong> - 📋The agenda for our OCWM on 2021-11-05 is found at https://t.co/fqvzNo7SAg and so far includes...
+- Reviewing our application to join the @openjsf 
+- Reviewing case study questions
+- Considering what should be on our website homepage
+
+Got something you want to discuss?
+Comment!</li>
+                           
+                        
+                     
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+               
+            </ul>      
           
           
       
