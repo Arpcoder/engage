@@ -24,7 +24,7 @@ layout: default
             {% assign this_day = this_timeline[1].created_at | date: '%s' %}
             {% assign day_diff = today | minus: this_day %}          
             {% assign how_many_days = day_diff | divided_by: single_day %}            
-            {% if how_many_days < 32 %}    
+            {% if how_many_days < 8 %}    
                {% for component in this_timeline[1].components %}
                   {% if all_components contains component %}
                   {% else %}
@@ -64,7 +64,7 @@ layout: default
                   {% assign this_day = this_timeline[1].created_at | date: '%s' %}
                   {% assign day_diff = today | minus: this_day %}          
                   {% assign how_many_days = day_diff | divided_by: single_day %}            
-                  {% if how_many_days < 32 %}    
+                  {% if how_many_days < 8 %}    
                      {% for this_component in this_timeline[1].components %}
                         {% if this_component == component %}
                         {% assign component_count = component_count | plus: 1 %}
@@ -82,7 +82,7 @@ layout: default
           $("#componentcloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 4},
+          "factor" : 20},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
@@ -115,7 +115,7 @@ layout: default
             {% assign this_day = this_timeline[1].created_at | date: '%s' %}
             {% assign day_diff = today | minus: this_day %}          
             {% assign how_many_days = day_diff | divided_by: single_day %}            
-            {% if how_many_days < 32 %}    
+            {% if how_many_days < 8 %}    
                {% for area in this_timeline[1].areas %}
                   {% if all_areas contains area %}
                   {% else %}
@@ -155,7 +155,7 @@ layout: default
                   {% assign this_day = this_timeline[1].created_at | date: '%s' %}
                   {% assign day_diff = today | minus: this_day %}          
                   {% assign how_many_days = day_diff | divided_by: single_day %}            
-                  {% if how_many_days < 32 %}    
+                  {% if how_many_days < 8 %}    
                      {% for this_area in this_timeline[1].areas %}
                         {% if this_area == area %}
                         {% assign area_count = area_count | plus: 1 %}
@@ -173,7 +173,7 @@ layout: default
           $("#areacloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 10},
+          "factor" : 20},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
@@ -214,7 +214,7 @@ layout: default
                   {% assign day_diff = today | minus: this_day %}          
                   {% assign how_many_days = day_diff | divided_by: single_day %}            
 
-                  {% if how_many_days < 32 %}    
+                  {% if how_many_days < 8 %}    
                      {% if all_organizations contains organization.name %}
                      {% else %}
                         {% assign all_organizations = all_organizations | append: organization.name | append: ',' %}
@@ -246,7 +246,7 @@ layout: default
                         {% assign day_diff = today | minus: this_day %}          
                         {% assign how_many_days = day_diff | divided_by: single_day %}            
 
-                        {% if how_many_days < 32 %}    
+                        {% if how_many_days < 8 %}    
                            {% if all_organizations contains organization.name %}
                            {% else %}
                               {% assign all_organizations = all_organizations | append: organization.name | append: ',' %}
@@ -298,7 +298,7 @@ layout: default
                            {% assign day_diff = today | minus: this_day %}          
                            {% assign how_many_days = day_diff | divided_by: single_day %}            
          
-                           {% if how_many_days < 32 %}    
+                           {% if how_many_days < 8 %}    
                               {% assign organization_count = organization_count | plus: 1 %}  
                            {% endif %} 
                         
@@ -330,7 +330,7 @@ layout: default
                                  {% assign day_diff = today | minus: this_day %}          
                                  {% assign how_many_days = day_diff | divided_by: single_day %}            
          
-                                 {% if how_many_days < 32 %}    
+                                 {% if how_many_days < 8 %}    
                                     {% assign organization_count = organization_count | plus: 1 %}   
                                  {% endif %}  
          
@@ -356,7 +356,7 @@ layout: default
           $("#organizationcloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 1},
+          "factor" : 5},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
@@ -389,7 +389,7 @@ layout: default
             {% assign this_day = this_timeline[1].created_at | date: '%s' %}
             {% assign day_diff = today | minus: this_day %}          
             {% assign how_many_days = day_diff | divided_by: single_day %}            
-            {% if how_many_days < 32 %}    
+            {% if how_many_days < 8 %}    
                {% for people in this_timeline[1].people %}
                   {% if all_peoples contains people %}
                   {% else %}
@@ -429,7 +429,7 @@ layout: default
                   {% assign this_day = this_timeline[1].created_at | date: '%s' %}
                   {% assign day_diff = today | minus: this_day %}          
                   {% assign how_many_days = day_diff | divided_by: single_day %}            
-                  {% if how_many_days < 32 %}    
+                  {% if how_many_days < 8 %}    
                      {% for this_people in this_timeline[1].people %}
                         {% if this_people == people %}
                         {% assign people_count = people_count | plus: 1 %}
@@ -447,7 +447,7 @@ layout: default
           $("#peoplecloud").awesomeCloud({
           "size" : {
           "grid" : 50,
-          "factor" : 5},
+          "factor" : 20},
           "options" : {
           "color" : "random-dark",
           "rotationRatio" : 0},
